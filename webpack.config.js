@@ -11,7 +11,13 @@ const env = process.env.NODE_ENV;
 
 const config = {
   context: path.resolve (__dirname, 'src'),
-  entry: ['babel-polyfill', './ClientApp.jsx'],
+  entry: [
+    'babel-polyfill',
+    'script-loader!jquery/dist/jquery.min.js',
+    'script-loader!popper.js/dist/umd/popper.min.js',
+    'script-loader!bootstrap/dist/js/bootstrap.min.js',
+    './ClientApp.jsx',
+  ],
   output: {
     path: path.resolve (__dirname, publicFile),
     filename: 'bundle.js',
@@ -126,6 +132,9 @@ const config = {
             {
               loader: 'sass-loader',
               options: {
+                includePaths: [
+                  path.resolve (__dirname, './node_modules/bootstrap/scss'),
+                ],
                 sourceMap: true,
               },
             },
