@@ -1,31 +1,27 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-export default ComposedComponent => {
-  const token = localStorage.getItem ('token');
-  async function getUser () {
-    try {
-      const user = await axios.get (
-        `https://tdah-rest-api.herokuapp.com/api/advisor/me`,
-        {
-          headers: {'x-auth': localStorage.getItem ('token')},
-        }
-      );
 
-      return user;
-    } catch (err) {
-      return err;
-    }
-  }
-  console.log (getUser ());
+export default (ComposedComponent, user) => {
+  const token = localStorage.getItem ('token');
   class Authentication extends Component {
     componentDidMount () {
       if (!token || token === 'undefined') {
         this.props.history.push ('/');
       }
+
+      // axios
+      //   .get (`https://tdah-rest-api.herokuapp.com/api/advisor/me`, {
+      //     headers: {'x-auth': token},
+      //   })
+      //   .then (user => {
+      //     this.setState ({
+      //       user,
+      //     });
+      //   });
     }
 
     render () {
-      return <ComposedComponent {...this.props} user={getUser ()} />;
+      return <ComposedComponent {...this.props} user={user} />;
     }
   }
 

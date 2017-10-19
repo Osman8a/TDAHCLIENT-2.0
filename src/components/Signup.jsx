@@ -48,52 +48,54 @@ class Signup extends Component {
 
   render () {
     return (
-      <div className="container">
-        <div className="row app-signup-wrapper">
-          <form
-            className="col-12 col-md-6 offset-md-3 app-signup"
-            onSubmit={this.handleSignUp}
-          >
-            <div className="form-group">
-              <label htmlFor="inputEmail" className="sr-only">
-                Email address
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="inputEmail"
-                name="email"
-                aria-describedby="emailHelp"
-                placeholder="Correo Electronico"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputPassword" className="sr-only">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="inputPassword"
-                name="password"
-                placeholder="Password"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputName" className="sr-only">
-                Nombre y Apellido
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="inputName"
-                name="displayName"
-                aria-describedby="nameHelp"
-                placeholder="Nombre y Apellido"
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-          </form>
+      <div>
+        <div className="container">
+          <div className="row app-signup-wrapper">
+            <form
+              className="col-12 col-md-6 offset-md-3 app-signup"
+              onSubmit={this.handleSignUp}
+            >
+              <div className="form-group">
+                <label htmlFor="inputEmail" className="w-100">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputEmail"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Correo Electronico"
+                  />
+                  <span className="sr-only">Email address</span>
+                </label>
+              </div>
+              <div className="form-group">
+                <label htmlFor="inputPassword" className="w-100">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="inputPassword"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <span className="sr-only">Password</span>
+                </label>
+              </div>
+              <div className="form-group">
+                <label htmlFor="inputName" className="w-100">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="inputName"
+                    name="displayName"
+                    aria-describedby="nameHelp"
+                    placeholder="Nombre y Apellido"
+                  />
+                  <span className="sr-only">Nombre y Apellido</span>
+                </label>
+              </div>
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
     );
