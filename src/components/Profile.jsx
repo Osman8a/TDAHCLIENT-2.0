@@ -1,19 +1,30 @@
-import React from 'react';
-import Navigation from './Navigation';
+import React from "react";
+import Navigation from "./Navigation";
 
-const Profile = ({user}) => {
+const Profile = ({ user }) => {
   if (!user) {
-    return 'Loading Data...';
+    return "Loading Data...";
   }
-  const {avatar, displayName, email} = user.data;
+  
+  const username = user.data.email.split("@")[0];
+  const { avatar, displayName, email } = user.data;
   return (
-    <div>
+    <div className="root_profile">
       <Navigation user={user.data} />
-      <img src={avatar} alt={displayName} />
-      <span>{displayName}</span>
-      <ul>
+      <img className="avatar-profile" src={avatar} alt={displayName} />
+      <span className="name">{displayName}</span>
+      <ul className="data">
         <li>
-          {email}
+          <span className="fa fa-user"/> {username}
+        </li>
+        <li>
+          <span className="fa fa-envelope"/> {email}
+        </li>
+        <li>
+          <span className="fa fa-briefcase" />
+        </li>
+        <li>
+          <span className="fa fa-location-arrow" />
         </li>
       </ul>
       <button>Pacientes</button>
