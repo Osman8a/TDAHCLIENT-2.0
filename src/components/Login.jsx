@@ -1,7 +1,10 @@
 import React from 'react';
-import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 const Login = props => {
+  if (localStorage.getItem ('token')) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <div>
       <div className="container">

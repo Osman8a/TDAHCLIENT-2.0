@@ -10,19 +10,22 @@ import Profile from './../components/Profile';
 
 import requiredAuth from './../components/requiredAuth';
 
-export default ({user, handleLogout, handleLogin}) => {
+export default ({user, handleLogout, handleLogin, handleSignUp}) => {
   return (
     <div>
-      <Header
-        user={user}
-        handleLogout={handleLogout}
-      />
+      <Header user={user} handleLogout={handleLogout} />
       <Switch>
         <Route exact path="/" component={About} />
-        <Route exact path="/login" component={() => (
-          <Login handleLogin={handleLogin} />
-        )} />
-        <Route exact path="/signup" component={Signup} />
+        <Route
+          exact
+          path="/login"
+          component={() => <Login handleLogin={handleLogin} />}
+        />
+        <Route
+          exact
+          path="/signup"
+          component={() => <Signup handleSignUp={handleSignUp} />}
+        />
         <Route
           exact
           path="/dashboard"

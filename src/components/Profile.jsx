@@ -5,7 +5,6 @@ const Profile = ({user}) => {
   if (!user) {
     return 'Loading Data...';
   }
-  console.log (user);
   const {avatar, displayName, email} = user.data;
   return (
     <div>

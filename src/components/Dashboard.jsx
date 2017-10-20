@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import Header from './Header';
 import Navigation from './Navigation';
 
 class Dashboard extends Component {
@@ -15,7 +13,6 @@ class Dashboard extends Component {
       return <div>Loading User</div>;
     }
     const {user: {data: user}} = this.props;
-    console.log (user);
     return (
       <div>
         <Navigation user={user} />

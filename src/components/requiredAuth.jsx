@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 export default (ComposedComponent, user) => {
   const token = localStorage.getItem ('token');
@@ -8,16 +7,6 @@ export default (ComposedComponent, user) => {
       if (!token || token === 'undefined') {
         this.props.history.push ('/');
       }
-
-      // axios
-      //   .get (`https://tdah-rest-api.herokuapp.com/api/advisor/me`, {
-      //     headers: {'x-auth': token},
-      //   })
-      //   .then (user => {
-      //     this.setState ({
-      //       user,
-      //     });
-      //   });
     }
 
     render () {

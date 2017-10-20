@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {NavLink, Link} from 'react-router-dom';
 
-const token = localStorage.getItem ('token');
-class Header extends Component {
-  detectUser = () => {
-    if (!this.props.user) {
+const Header = props => {
+  const token = localStorage.getItem ('token');
+
+  const detectUser = () => {
+    if (!props.user) {
       return [
         <li key="1" className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/login">
@@ -22,49 +23,47 @@ class Header extends Component {
 
     return (
       <li key="1" className="nav-item">
-        <button className="btn btn-primary" onClick={this.props.handleLogout}>
+        <button className="btn btn-primary" onClick={props.handleLogout}>
           Salir
         </button>
       </li>
     );
   };
 
-  render () {
-    return (
-      <header>
-        <nav className="page-header navbar navbar-expand-sm navbar-dark">
-          {/* eslint-disable*/}
-          <Link to={token ? '/dashboard' : '/'} className="navbar-brand">
-            <h1 className="h2 page-header__logo">
-              <span className="logo-text">TDAH</span>
-              <img
-                src="http://res.cloudinary.com/osman8a/image/upload/v1506460685/logo_rtnxss.gif"
-                className="App-logo"
-                alt="logo"
-              />
-            </h1>
-          </Link>
-          {/* eslint-enable */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul className="navbar-nav">
-              {this.detectUser ()}
-            </ul>
-          </div>
-        </nav>
-      </header>
-    );
-  }
-}
+  return (
+    <header>
+      <nav className="page-header navbar navbar-expand-sm navbar-dark">
+        {/* eslint-disable*/}
+        <Link to={token ? '/dashboard' : '/'} className="navbar-brand">
+          <h1 className="h2 page-header__logo">
+            <span className="logo-text">TDAH</span>
+            <img
+              src="http://res.cloudinary.com/osman8a/image/upload/v1506460685/logo_rtnxss.gif"
+              className="App-logo"
+              alt="logo"
+            />
+          </h1>
+        </Link>
+        {/* eslint-enable */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            {detectUser ()}
+          </ul>
+        </div>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;
