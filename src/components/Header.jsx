@@ -1,12 +1,17 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+// @flow
+import React from 'react';
 import {NavLink, Link} from 'react-router-dom';
 
-const Header = props => {
+type Props = {
+  user: Object,
+  handleLogout: Function,
+};
+
+const Header = ({user, handleLogout}: Props) => {
   const token = localStorage.getItem ('token');
 
   const detectUser = () => {
-    if (!props.user) {
+    if (!user) {
       return [
         <li key="1" className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/login">
@@ -23,7 +28,7 @@ const Header = props => {
 
     return (
       <li key="1" className="nav-item">
-        <button className="btn btn-primary" onClick={props.handleLogout}>
+        <button className="btn btn-primary" onClick={handleLogout}>
           Salir
         </button>
       </li>

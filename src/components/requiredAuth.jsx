@@ -1,8 +1,15 @@
+// @flow
 import React, {Component} from 'react';
 
-export default (ComposedComponent, user) => {
+type Props = {
+  history: {
+    push: Function,
+  },
+};
+
+export default (ComposedComponent, user: Object) => {
   const token = localStorage.getItem ('token');
-  class Authentication extends Component {
+  class Authentication extends Component<Props> {
     componentDidMount () {
       if (!token || token === 'undefined') {
         this.props.history.push ('/');

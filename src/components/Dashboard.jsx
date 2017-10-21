@@ -1,7 +1,17 @@
+// @flow
 import React, {Component} from 'react';
 import Navigation from './Navigation';
 
-class Dashboard extends Component {
+type Props = {
+  user: {
+    status: Number,
+  },
+  history: {
+    push: Function,
+  },
+};
+
+class Dashboard extends Component<Props> {
   componentDidMount () {
     if (this.props.user && this.props.user.status === 401) {
       this.props.history.push ('/');

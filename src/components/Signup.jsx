@@ -1,7 +1,12 @@
+// @flow
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 
-const Signup = props => {
+type Props = {
+  handleSignUp: Function,
+};
+
+const Signup = (props: Props) => {
   const token = localStorage.getItem ('token');
   if (token) {
     return <Redirect to="/dashboard" />;

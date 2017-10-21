@@ -1,7 +1,12 @@
+// @flow
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 
-const Login = props => {
+type Props = {
+  handleLogin: Function,
+};
+
+const Login = (props: Props) => {
   if (localStorage.getItem ('token')) {
     return <Redirect to="/dashboard" />;
   }

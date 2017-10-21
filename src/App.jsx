@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router} from 'react-router-dom';
@@ -13,7 +14,13 @@ import Routes from './routes/routes';
 
 const token = localStorage.getItem ('token');
 
-class App extends Component {
+type Props = {
+  history: {
+    push: Function,
+  },
+};
+
+class App extends Component<Props> {
   constructor (props) {
     super (props);
     this.state = {
@@ -133,12 +140,14 @@ class App extends Component {
     //         headers: {'x-auth': token},
     //       }
     //     );
+    //   } catch (err) {
+    //     throw new Error (err);
+    //   } finally {
+    //     localStorage.removeItem ('token');
     //     this.setState ({
     //       user: null,
     //     });
-    //     this.props.history.push ('/');
-    //   } catch (err) {
-    //     throw new Error (err);
+    //     // this.props.history.push ('/');
     //   }
     // }) ();
     axios
@@ -159,6 +168,7 @@ class App extends Component {
     // if (!this.state.user) {
     //   return 'Loading data...';
     // }
+    console.log (this.state.user);
     return (
       <Router>
         <Routes
