@@ -12,8 +12,6 @@ import './scss/style.scss';
 
 import Routes from './routes/routes';
 
-const token = localStorage.getItem ('token');
-
 type Props = {
   history: {
     push: Function,
@@ -32,10 +30,10 @@ class App extends Component<Props> {
   }
 
   componentDidMount () {
-    if (token) {
+    if (localStorage.getItem ('token')) {
       axios
         .get (`https://tdah-rest-api.herokuapp.com/api/advisor/me`, {
-          headers: {'x-auth': token},
+          headers: {'x-auth': localStorage.getItem ('token')},
         })
         .then (user => {
           this.setState ({
@@ -132,27 +130,9 @@ class App extends Component<Props> {
 
   handleLogout = e => {
     e.preventDefault ();
-    // (async () => {
-    //   try {
-    //     await axios.delete (
-    //       'https://tdah-rest-api.herokuapp.com/api/advisor/logout',
-    //       {
-    //         headers: {'x-auth': token},
-    //       }
-    //     );
-    //   } catch (err) {
-    //     throw new Error (err);
-    //   } finally {
-    //     localStorage.removeItem ('token');
-    //     this.setState ({
-    //       user: null,
-    //     });
-    //     // this.props.history.push ('/');
-    //   }
-    // }) ();
     axios
       .delete ('https://tdah-rest-api.herokuapp.com/api/advisor/logout', {
-        headers: {'x-auth': token},
+        headers: {'x-auth': localStorage.getItem ('token')},
       })
       .then (() => {
         localStorage.removeItem ('token');
@@ -168,7 +148,6 @@ class App extends Component<Props> {
     // if (!this.state.user) {
     //   return 'Loading data...';
     // }
-    console.log (this.state.user);
     return (
       <Router>
         <Routes
