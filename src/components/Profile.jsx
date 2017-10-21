@@ -22,7 +22,11 @@ const Profile = ({user}: Props) => {
   return (
     <div className="root_profile">
       <Navigation user={user.data} />
-      <img className="avatar-profile" src={avatar} alt={displayName} />
+      <img
+        className="avatar-profile"
+        src={avatar}
+        alt={displayName}
+      />
       <span className="name">{displayName}</span>
       <ul className="data">
         <li>

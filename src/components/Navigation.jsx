@@ -10,13 +10,28 @@ type Props = {
 };
 const Navigation = ({user}: Props) => (
   <nav className="nav">
-    <NavLink className="nav-link" activeClassName="active" to="/profile">
-      <img src={user.avatar} alt={user.displayName} />
+    <NavLink
+      className="nav-link"
+      activeClassName="active"
+      to="/profile"
+    >
+      <img
+        src={user.avatar}
+        alt={user.displayName}
+      />
     </NavLink>
-    <NavLink className="nav-link" activeClassName="active" to="/">
+    <NavLink
+      className="nav-link"
+      activeClassName="active"
+      to="/"
+    >
       Terapia
     </NavLink>
-    <NavLink className="nav-link" activeClassName="active" to="/">
+    <NavLink
+      className="nav-link"
+      activeClassName="active"
+      to="/"
+    >
       Ayuda
     </NavLink>
   </nav>
