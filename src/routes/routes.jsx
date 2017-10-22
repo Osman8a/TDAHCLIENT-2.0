@@ -13,25 +13,23 @@ import requiredAuth from './../components/requiredAuth';
 
 type Props = {
   user: Object,
-  handleLogout: Function,
-  handleLogin: Function,
-  handleSignUp: Function,
+  updateGlobalState: Function
 };
 
-export default ({user, handleLogout, handleLogin, handleSignUp}: Props) => (
+export default ({user, updateGlobalState}: Props) => (
   <div>
-    <Header user={user} handleLogout={handleLogout} />
+    <Header user={user} handleLogout={updateGlobalState} />
     <Switch>
       <Route exact path="/" component={About} />
       <Route
         exact
         path="/login"
-        component={() => <Login handleLogin={handleLogin} />}
+        component={() => <Login handleLogin={updateGlobalState} />}
       />
       <Route
         exact
         path="/signup"
-        component={() => <Signup handleSignUp={handleSignUp} />}
+        component={() => <Signup handleSignUp={updateGlobalState} />}
       />
       <Route
         exact

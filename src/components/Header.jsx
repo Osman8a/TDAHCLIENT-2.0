@@ -1,13 +1,18 @@
 // @flow
 import React from 'react';
 import {NavLink, Link} from 'react-router-dom';
+import axios from 'axios';
+import { apiURL } from '../constants';
 
 type Props = {
   user: Object,
   handleLogout: Function,
+  history: {
+    push: Function,
+  },
 };
 
-const Header = ({user, handleLogout}: Props) => {
+const Header = ({user, handleLogout, history}: Props) => {
   const token = localStorage.getItem ('token');
 
   const detectUser = () => {
@@ -28,7 +33,10 @@ const Header = ({user, handleLogout}: Props) => {
 
     return (
       <li key="1" className="nav-item">
-        <button className="btn btn-primary" onClick={handleLogout}>
+        <button
+          className="btn btn-primary"
+          onClick={Header.onLogout(handleLogout, history)}
+        >
           Salir
         </button>
       </li>
@@ -39,7 +47,10 @@ const Header = ({user, handleLogout}: Props) => {
     <header>
       <nav className="page-header navbar navbar-expand-sm navbar-dark">
         {/* eslint-disable*/}
-        <Link to={token ? '/dashboard' : '/'} className="navbar-brand">
+        <Link
+          to={token ? '/dashboard' : '/'}
+          className="navbar-brand"
+        >
           <h1 className="h2 page-header__logo">
             <span className="logo-text">TDAH</span>
             <img
@@ -61,14 +72,29 @@ const Header = ({user, handleLogout}: Props) => {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNavDropdown"
+        >
           <ul className="navbar-nav">
-            {detectUser ()}
+            {detectUser()}
           </ul>
         </div>
       </nav>
     </header>
   );
+};
+
+Header.onLogout = (handleLogout, history) => e => {
+  e.preventDefault();
+  const token = localStorage.getItem('token');
+  axios.delete(`${apiURL}/advisor/logout`, {
+    headers: {'x-auth': token},
+  }).then(() => {
+    localStorage.removeItem('token');
+    handleLogout({ user: null });
+    history.push('/');
+  }).catch(err => new Error(err));
 };
 
 export default Header;
