@@ -98,8 +98,8 @@
     "popper.js": "^1.12.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
+    "react-date-picker": "^6.2.2",
     "react-dom": "16.0.0",
-    "react-modal": "^3.0.4",
     "react-router-dom": "4.2.2"
   }
 }
