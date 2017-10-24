@@ -1,32 +1,29 @@
 // @flow
-import React from 'react';
-import Navigation from './Navigation';
+import React from "react";
+import Navigation from "./Navigation";
+import Patients from "./Patients";
 
 type Props = {
   user: {
     data: {
       email: String,
       displayName: String,
-      avatar: String,
-    },
-  },
+      avatar: String
+    }
+  }
 };
 
-const Profile = ({user}: Props) => {
+const Profile = ({ user }: Props) => {
   if (!user) {
-    return 'Loading Data...';
+    return "Loading Data...";
   }
-
-  const username = user.data.email.split ('@')[0];
-  const {avatar, displayName, email} = user.data;
+  
+  const username = user.data.email.split("@")[0];
+  const { avatar, displayName, email } = user.data;
   return (
     <div className="root_profile">
       <Navigation user={user.data} />
-      <img
-        className="avatar-profile"
-        src={avatar}
-        alt={displayName}
-      />
+      <img className="avatar-profile" src={avatar} alt={displayName} />
       <span className="name">{displayName}</span>
       <ul className="data">
         <li>
@@ -42,9 +39,17 @@ const Profile = ({user}: Props) => {
           <span className="fa fa-location-arrow" />
         </li>
       </ul>
-      <button>Pacientes</button>
+      <Patients/>
+      {/* <button onClick={renderPatient}>Pacientes</button> */}
+      <button onClick={Profile.renderPatient}>Pacientes</button>
     </div>
   );
 };
+
+Profile.renderPatient = () => (
+  <div>
+    {<Patients/>}
+  </div>
+);
 
 export default Profile;
