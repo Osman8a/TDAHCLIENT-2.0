@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import {Route, Switch} from 'react-router';
 
@@ -6,7 +7,6 @@ import About from './../components/Home';
 import Signup from './../components/Signup';
 import Login from './../components/Login';
 import Dashboard from './../components/Dashboard';
-// @flow
 import Profile from './../components/Profile';
 
 import requiredAuth from './../components/requiredAuth';

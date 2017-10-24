@@ -1,8 +1,8 @@
 // @flow
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { apiURL } from 'constants';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {apiURL} from 'constants';
 
 /* eslint-disable */
 import './favicon.ico?output=favicon.ico';
@@ -19,13 +19,15 @@ class App extends Component {
   componentDidMount () {
     const token = localStorage.getItem ('token');
     if (token) {
-      axios.get (`${apiURL}/advisor/me`, {
-        headers: {'x-auth': token},
-      }).then (user => this.setState ({ user }));
+      axios
+        .get (`${apiURL}/advisor/me`, {
+          headers: {'x-auth': token},
+        })
+        .then (user => this.setState ({user}));
     }
   }
 
-  updateGlobalState = state => this.setState(state);
+  updateGlobalState = state => this.setState (state);
 
   render () {
     // if (!this.state.user) {
