@@ -13,7 +13,7 @@ import Routes from './routes/routes';
 class App extends Component {
   state = {
     user: null,
-    patients: null,
+    patients: [],
   };
 
   componentDidMount () {
