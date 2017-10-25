@@ -13,10 +13,11 @@ import requiredAuth from './../components/requiredAuth';
 
 type Props = {
   user: Object,
-  updateGlobalState: Function
+  patients: Object,
+  updateGlobalState: Function,
 };
 
-export default ({user, updateGlobalState}: Props) => (
+export default ({user, patients, updateGlobalState}: Props) => (
   <div>
     <Header user={user} handleLogout={updateGlobalState} />
     <Switch>
@@ -24,7 +25,7 @@ export default ({user, updateGlobalState}: Props) => (
       <Route
         exact
         path="/login"
-        component={() => <Login handleLogin={updateGlobalState} />}
+        component={() => <Login handandleLogin={updateGlobalState} />}
       />
       <Route
         exact
@@ -34,9 +35,13 @@ export default ({user, updateGlobalState}: Props) => (
       <Route
         exact
         path="/dashboard"
-        component={requiredAuth (Dashboard, user)}
+        component={requiredAuth (Dashboard, user, patients)}
       />
-      <Route exact path="/profile" component={requiredAuth (Profile, user)} />
+      <Route
+        exact
+        path="/profile"
+        component={requiredAuth (Profile, user, patients, updateGlobalState)}
+      />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
   </div>

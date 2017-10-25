@@ -7,7 +7,12 @@ type Props = {
   },
 };
 
-export default (ComposedComponent, user: Object) => {
+export default (
+  ComposedComponent,
+  user: Object,
+  patients: Object,
+  updateGlobalState: Function
+) => {
   const token = localStorage.getItem ('token');
   class Authentication extends Component<Props> {
     componentDidMount () {
@@ -17,7 +22,14 @@ export default (ComposedComponent, user: Object) => {
     }
 
     render () {
-      return <ComposedComponent {...this.props} user={user} />;
+      return (
+        <ComposedComponent
+          {...this.props}
+          user={user}
+          patients={patients}
+          updateGlobalState={updateGlobalState}
+        />
+      );
     }
   }
 
