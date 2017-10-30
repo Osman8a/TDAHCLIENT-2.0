@@ -8,8 +8,9 @@ import Signup from "./../components/Signup";
 import Login from "./../components/Login";
 import Dashboard from "./../components/Dashboard";
 import Profile from "./../components/Profile";
-
+import Area from "./../components/AreaList";
 import requiredAuth from "./../components/requiredAuth";
+import AreaList from "../components/AreaList";
 
 type Props = {
   user: Object,
@@ -57,6 +58,16 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
         //     updateGlobalState={updateGlobalState}
         //   />
         // )}
+      />
+      <Route
+        exact
+        path="/arealist"
+        component={() => (
+          <AreaList
+            currentPatient={currentPatient}
+            updateGlobalState={updateGlobalState}
+          />
+        )}
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>

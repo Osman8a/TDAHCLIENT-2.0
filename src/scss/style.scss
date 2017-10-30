@@ -1,10 +1,11 @@
 // Theme Variables
-@import 'base/variables';
+@import "base/variables";
 // Bootstrap
-@import 'bootstrap/bootstrap-custom';
-@import 'bootstrap/bootstrap';
+@import "bootstrap/bootstrap-custom";
+@import "bootstrap/bootstrap";
 // Components
-@import 'components/header';
-@import 'components/signup';
-@import 'components/login';
-@import 'components/profile';
+@import "components/header";
+@import "components/signup";
+@import "components/login";
+@import "components/profile";
+@import "components/area";

@@ -20,7 +20,7 @@ const Navigation = ({ user }: Props) => {
           ? `${patient.name} ${patient.lastname}`
           : "Seleccione un Paciente"}
       </p>
-      <NavLink className="nav-link" activeClassName="active" to="/">
+      <NavLink className="nav-link" activeClassName="active" to="arealist">
         Terapia
       </NavLink>
       <NavLink className="nav-link" activeClassName="active" to="/">
