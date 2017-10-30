@@ -16,7 +16,7 @@ const Header = ({user, handleLogout, history}: Props) => {
   const token = localStorage.getItem ('token');
 
   const detectUser = () => {
-    if (!user) {
+    if (!user && !token) {
       return [
         <li key="1" className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/login">

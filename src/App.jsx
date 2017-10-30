@@ -1,44 +1,50 @@
 // @flow
-import React, {Component} from 'react';
-import axios from 'axios';
-import {BrowserRouter as Router} from 'react-router-dom';
-import {apiURL} from 'constants';
+import React, { Component } from "react";
+import axios from "axios";
+import { BrowserRouter as Router } from "react-router-dom";
 
 /* eslint-disable */
-import './favicon.ico?output=favicon.ico';
+import "./favicon.ico?output=favicon.ico";
 /* eslint-enable */
 
-import './scss/style.scss';
-import Routes from './routes/routes';
+import "./scss/style.scss";
+import Routes from "./routes/routes";
 
 class App extends Component {
   state = {
-    user: null,
+    user: null
   };
 
-  componentDidMount () {
-    const token = localStorage.getItem ('token');
+  componentDidMount() {
+    const token = localStorage.getItem("token");
     if (token) {
-      axios
-        .get (`${apiURL}/advisor/me`, {
-          headers: {'x-auth': token},
-        })
-        .then (user => this.setState ({user}));
+      (async () => {
+        try {
+          const user = await axios.get(
+            `https://tdah-rest-api.herokuapp.com/api/advisor/me`,
+            {
+              headers: { "x-auth": token }
+            }
+          );
+
+          this.setState({ user });
+        } catch (err) {
+          throw new Error(err);
+        }
+      })();
     }
   }
 
-  updateGlobalState = state => this.setState (state);
+  updateGlobalState = state => this.setState(state);
 
-  render () {
+  render() {
+    const { user } = this.state;
     // if (!this.state.user) {
     //   return 'Loading data...';
     // }
     return (
       <Router>
-        <Routes
-          user={this.state.user}
-          updateGlobalState={this.updateGlobalState}
-        />
+        <Routes user={user} updateGlobalState={this.updateGlobalState} />
       </Router>
     );
   }

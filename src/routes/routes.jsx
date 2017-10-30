@@ -1,22 +1,21 @@
 // @flow
-import React from 'react';
-import {Route, Switch} from 'react-router';
+import React from "react";
+import { Route, Switch } from "react-router";
 
-import Header from './../components/Header';
-import About from './../components/Home';
-import Signup from './../components/Signup';
-import Login from './../components/Login';
-import Dashboard from './../components/Dashboard';
-import Profile from './../components/Profile';
+import Header from "./../components/Header";
+import About from "./../components/Home";
+import Signup from "./../components/Signup";
+import Login from "./../components/Login";
+import Dashboard from "./../components/Dashboard";
+import Profile from "./../components/Profile";
 
-import requiredAuth from './../components/requiredAuth';
+import requiredAuth from "./../components/requiredAuth";
 
 type Props = {
   user: Object,
   updateGlobalState: Function
 };
-
-export default ({user, updateGlobalState}: Props) => (
+export default ({ user, updateGlobalState }: Props) => (
   <div>
     <Header user={user} handleLogout={updateGlobalState} />
     <Switch>
@@ -34,9 +33,16 @@ export default ({user, updateGlobalState}: Props) => (
       <Route
         exact
         path="/dashboard"
-        component={requiredAuth (Dashboard, user)}
+        component={requiredAuth(Dashboard, user)}
       />
-      <Route exact path="/profile" component={requiredAuth (Profile, user)} />
+      <Route
+        exact
+        path="/profile"
+        // component={requiredAuth(Profile, user, updateGlobalState)}
+        component={() => (
+          <Profile user={user} updateGlobalState={updateGlobalState} />
+        )}
+      />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
   </div>
