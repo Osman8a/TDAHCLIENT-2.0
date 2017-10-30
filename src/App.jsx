@@ -12,7 +12,8 @@ import Routes from "./routes/routes";
 
 class App extends Component {
   state = {
-    user: null
+    user: null,
+    currentPatient: null
   };
 
   componentDidMount() {
@@ -38,13 +39,17 @@ class App extends Component {
   updateGlobalState = state => this.setState(state);
 
   render() {
-    const { user } = this.state;
+    const { user, currentPatient } = this.state;
     // if (!this.state.user) {
     //   return 'Loading data...';
     // }
     return (
       <Router>
-        <Routes user={user} updateGlobalState={this.updateGlobalState} />
+        <Routes
+          user={user}
+          currentPatient={currentPatient}
+          updateGlobalState={this.updateGlobalState}
+        />
       </Router>
     );
   }

@@ -10,6 +10,7 @@ type Props = {
 export default (
   ComposedComponent,
   user: Object,
+  currentPatient: Object,
   updateGlobalState: Function
 ) => {
   const token = localStorage.getItem("token");
@@ -25,6 +26,7 @@ export default (
         <ComposedComponent
           {...this.props}
           user={user}
+          currentPatient={currentPatient}
           updateGlobalState={updateGlobalState}
         />
       );

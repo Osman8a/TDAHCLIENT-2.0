@@ -1,6 +1,5 @@
 // @flow
 import React from "react";
-import { Redirect } from "react-router-dom";
 import Navigation from "./Navigation";
 import Patients from "./Patients";
 
@@ -13,15 +12,11 @@ type Props = {
       patients: Array
     }
   },
+  currentPatient: Object,
   updateGlobalState: Function
 };
 
-const Profile = ({ user, updateGlobalState }: Props) => {
-  const token = localStorage.getItem("token");
-  if (!token || token === "undefined") {
-    return <Redirect to="/" />;
-  }
-
+const Profile = ({ user, currentPatient, updateGlobalState }: Props) => {
   if (!user) {
     return "Loading Data...";
   }
@@ -47,7 +42,17 @@ const Profile = ({ user, updateGlobalState }: Props) => {
 
     return patients.map(patient => (
       /* eslint-disable */
-      <tr key={patient._id}>
+      <tr
+        key={patient._id}
+        onClick={e => {
+          updateGlobalState({ currentPatient: patient });
+          localStorage.removeItem("currentPatient");
+          localStorage.setItem(
+            "currentPatient",
+            JSON.stringify(patient, null, 2)
+          );
+        }}
+      >
         {/* eslint-enable */}
         <th scope="row">1</th>
         <td>
@@ -61,7 +66,7 @@ const Profile = ({ user, updateGlobalState }: Props) => {
 
   return (
     <div className="root_profile">
-      <Navigation user={user.data} />
+      <Navigation user={user.data} currentPatient={currentPatient} />
       <img className="avatar-profile" src={avatar} alt={displayName} />
       <span className="name">{displayName}</span>
       <ul className="data">
