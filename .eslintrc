@@ -5,14 +5,7 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": [
-    "flowtype",
-    "prettier",
-    "react",
-    "jsx-a11y",
-    "import",
-    "flow"
-  ],
+  "plugins": ["flowtype", "prettier", "react", "jsx-a11y", "import", "flow"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2016,
@@ -32,14 +25,9 @@
     "jsx-a11y/label-has-for": [
       2,
       {
-        "components": [
-          "Label"
-        ],
+        "components": ["Label"],
         "required": {
-          "every": [
-            "nesting",
-            "id"
-          ]
+          "every": ["nesting", "id"]
         },
         "allowChildren": false
       }
@@ -47,14 +35,12 @@
     "new-cap": [
       2,
       {
-        "capIsNewExceptions": [
-          "Map",
-          "List"
-        ]
+        "capIsNewExceptions": ["Map", "List"]
       }
     ],
     "no-console": 0,
     "arrow-parens": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "no-underscore-dangle": 0
   }
 }

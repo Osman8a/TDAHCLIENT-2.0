@@ -27,7 +27,6 @@ class App extends Component {
               headers: { "x-auth": token }
             }
           );
-
           this.setState({ user });
         } catch (err) {
           throw new Error(err);
