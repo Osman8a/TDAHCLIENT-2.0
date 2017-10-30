@@ -2,6 +2,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 import Patients from "./Patients";
+import RenderPatients from "./RenderPatients";
 
 type Props = {
   user: {
@@ -25,44 +26,44 @@ const Profile = ({ user, currentPatient, updateGlobalState }: Props) => {
   const { avatar, displayName, email } = user.data;
   const { patients } = user.data;
 
-  const renderPatients = () => {
-    if (patients.length === 0) {
-      return "No Patients Yet... Register One!";
-    }
+  // const renderPatients = () => {
+  //   if (patients.length === 0) {
+  //     return "No Patients Yet... Register One!";
+  //   }
 
-    const formatDate = timeStamp => {
-      const date = new Date(timeStamp);
-      const options = {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      };
-      return date.toLocaleString("es-VE", options);
-    };
+  //   const formatDate = timeStamp => {
+  //     const date = new Date(timeStamp);
+  //     const options = {
+  //       year: "numeric",
+  //       month: "2-digit",
+  //       day: "2-digit"
+  //     };
+  //     return date.toLocaleString("es-VE", options);
+  //   };
 
-    return patients.map(patient => (
-      /* eslint-disable */
-      <tr
-        key={patient._id}
-        onClick={e => {
-          updateGlobalState({ currentPatient: patient });
-          localStorage.removeItem("currentPatient");
-          localStorage.setItem(
-            "currentPatient",
-            JSON.stringify(patient, null, 2)
-          );
-        }}
-      >
-        {/* eslint-enable */}
-        <th scope="row">1</th>
-        <td>
-          {patient.name} {patient.lastname}
-        </td>
-        <td>{formatDate(patient.age)}</td>
-        <td>{patient.avance}</td>
-      </tr>
-    ));
-  };
+  //   return patients.map(patient => (
+  //     /* eslint-disable */
+  //     <tr
+  //       key={patient._id}
+  //       onClick={e => {
+  //         updateGlobalState({ currentPatient: patient });
+  //         localStorage.removeItem("currentPatient");
+  //         localStorage.setItem(
+  //           "currentPatient",
+  //           JSON.stringify(patient, null, 2)
+  //         );
+  //       }}
+  //     >
+  //       {/* eslint-enable */}
+  //       <th scope="row">1</th>
+  //       <td>
+  //         {patient.name} {patient.lastname}
+  //       </td>
+  //       <td>{formatDate(patient.age)}</td>
+  //       <td>{patient.avance}</td>
+  //     </tr>
+  //   ));
+  // };
 
   return (
     <div className="root_profile">
@@ -84,17 +85,10 @@ const Profile = ({ user, currentPatient, updateGlobalState }: Props) => {
         </li>
       </ul>
       <Patients updateGlobalState={updateGlobalState} />
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Edad</th>
-            <th scope="col">avance</th>
-          </tr>
-        </thead>
-        <tbody>{renderPatients()}</tbody>
-      </table>
+      <RenderPatients
+        patients={patients}
+        updateGlobalState={updateGlobalState}
+      />
     </div>
   );
 };

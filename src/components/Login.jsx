@@ -1,17 +1,17 @@
 // @flow
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-import InputEmail from './InputEmail';
-import InputPassword from './InputPassword';
-import { apiURL, regex } from '../constants';
+import React from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+import InputEmail from "./InputEmail";
+import InputPassword from "./InputPassword";
+import { apiURL, regex } from "../constants";
 
 type Props = {
-  handleLogin: Function,
+  handleLogin: Function
 };
 
 const Login = (props: Props) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   if (token) return <Redirect to="/dashboard" />;
   return (
     <div>
@@ -23,10 +23,9 @@ const Login = (props: Props) => {
           >
             <InputEmail />
             <InputPassword />
-            <button
-              type="submit"
-              className="btn btn-primary"
-            >Submit</button>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -37,32 +36,27 @@ const Login = (props: Props) => {
 Login.onSubmit = handleLogin => e => {
   e.preventDefault();
 
-  const {
-    email: {value: email},
-    password: {value: password}
-  } = e.target;
-  const {
-    email: reMail,
-    password: rePassword
-  } = regex;
+  const { email: { value: email }, password: { value: password } } = e.target;
+  const { email: reMail, password: rePassword } = regex;
 
   if (!reMail.test(email)) {
-    console.log('Email Invalido');
+    console.log("Email Invalido");
     return;
   }
 
   if (!rePassword.test(password)) {
-    console.log('password Invalido');
+    console.log("password Invalido");
     return;
   }
   (async () => {
     try {
-      const user = await axios.post(
-        `${apiURL}/advisor/login`, { email, password }
-      );
-      localStorage.setItem('token', user.headers['x-auth']);
+      const user = await axios.post(`${apiURL}/advisor/login`, {
+        email,
+        password
+      });
+      localStorage.setItem("token", user.headers["x-auth"]);
       handleLogin({ user });
-    } catch(err) {
+    } catch (err) {
       throw new Error(err);
     }
   })();

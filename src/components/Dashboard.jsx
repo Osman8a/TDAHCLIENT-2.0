@@ -21,12 +21,10 @@ class Dashboard extends Component<Props> {
   }
 
   render() {
-    console.log(this.props.updateGlobalState);
     if (!this.props.user) {
       return <div>Loading User</div>;
     }
     const { user: { data: user }, currentPatient } = this.props;
-    console.log(currentPatient);
     return (
       <div>
         <Navigation user={user} currentPatient={currentPatient} />
