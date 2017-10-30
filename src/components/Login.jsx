@@ -54,8 +54,16 @@ Login.onSubmit = handleLogin => e => {
         email,
         password
       });
+
       localStorage.setItem("token", user.headers["x-auth"]);
-      handleLogin({ user });
+
+      const getUser = await axios.get(
+        `https://tdah-rest-api.herokuapp.com/api/advisor/me`,
+        {
+          headers: { "x-auth": localStorage.getItem("token") }
+        }
+      );
+      handleLogin({ user: getUser });
     } catch (err) {
       throw new Error(err);
     }
