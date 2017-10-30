@@ -1,23 +1,21 @@
 // @flow
-import React from 'react';
-import {Route, Switch} from 'react-router';
+import React from "react";
+import { Route, Switch } from "react-router";
 
-import Header from './../components/Header';
-import About from './../components/Home';
-import Signup from './../components/Signup';
-import Login from './../components/Login';
-import Dashboard from './../components/Dashboard';
-import Profile from './../components/Profile';
+import Header from "./../components/Header";
+import About from "./../components/Home";
+import Signup from "./../components/Signup";
+import Login from "./../components/Login";
+import Dashboard from "./../components/Dashboard";
+import Profile from "./../components/Profile";
 
-import requiredAuth from './../components/requiredAuth';
+import requiredAuth from "./../components/requiredAuth";
 
 type Props = {
   user: Object,
-  patients: Object,
-  updateGlobalState: Function,
+  updateGlobalState: Function
 };
-
-export default ({user, patients, updateGlobalState}: Props) => (
+export default ({ user, updateGlobalState }: Props) => (
   <div>
     <Header user={user} handleLogout={updateGlobalState} />
     <Switch>
@@ -25,7 +23,7 @@ export default ({user, patients, updateGlobalState}: Props) => (
       <Route
         exact
         path="/login"
-        component={() => <Login handandleLogin={updateGlobalState} />}
+        component={() => <Login handleLogin={updateGlobalState} />}
       />
       <Route
         exact
@@ -35,12 +33,15 @@ export default ({user, patients, updateGlobalState}: Props) => (
       <Route
         exact
         path="/dashboard"
-        component={requiredAuth (Dashboard, user, patients)}
+        component={requiredAuth(Dashboard, user)}
       />
       <Route
         exact
         path="/profile"
-        component={requiredAuth (Profile, user, patients, updateGlobalState)}
+        // component={requiredAuth(Profile, user, updateGlobalState)}
+        component={() => (
+          <Profile user={user} updateGlobalState={updateGlobalState} />
+        )}
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>

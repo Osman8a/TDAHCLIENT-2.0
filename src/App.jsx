@@ -1,63 +1,50 @@
 // @flow
-import React, {Component} from 'react';
-import axios from 'axios';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React, { Component } from "react";
+import axios from "axios";
+import { BrowserRouter as Router } from "react-router-dom";
 
 /* eslint-disable */
-import './favicon.ico?output=favicon.ico';
+import "./favicon.ico?output=favicon.ico";
 /* eslint-enable */
 
-import './scss/style.scss';
-import Routes from './routes/routes';
+import "./scss/style.scss";
+import Routes from "./routes/routes";
 
 class App extends Component {
   state = {
-    user: null,
-    patients: [],
+    user: null
   };
 
-  componentDidMount () {
-    const token = localStorage.getItem ('token');
+  componentDidMount() {
+    const token = localStorage.getItem("token");
     if (token) {
       (async () => {
         try {
-          const user = await axios.get (
+          const user = await axios.get(
             `https://tdah-rest-api.herokuapp.com/api/advisor/me`,
             {
-              headers: {'x-auth': token},
+              headers: { "x-auth": token }
             }
           );
 
-          const patients = await axios.get (
-            `https://tdah-rest-api.herokuapp.com/api/patients`,
-            {
-              headers: {'x-auth': token},
-            }
-          );
-
-          this.setState ({user, patients});
+          this.setState({ user });
         } catch (err) {
-          throw new Error (err);
+          throw new Error(err);
         }
-      }) ();
+      })();
     }
   }
 
-  updateGlobalState = state => this.setState (state);
+  updateGlobalState = state => this.setState(state);
 
-  render () {
-    const {user, patients} = this.state;
-    console.log (patients);
+  render() {
+    const { user } = this.state;
     // if (!this.state.user) {
     //   return 'Loading data...';
     // }
     return (
       <Router>
-        <Routes
-          user={user}
-          patients={patients}
-          updateGlobalState={this.updateGlobalState}
-        />
+        <Routes user={user} updateGlobalState={this.updateGlobalState} />
       </Router>
     );
   }
