@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react";
+import 'font-awesome/css/font-awesome.css'
 import axios from "axios";
 import { BrowserRouter as Router } from "react-router-dom";
 

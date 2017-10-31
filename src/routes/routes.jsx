@@ -74,7 +74,7 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
       />
       <Route
         exact
-        path="/momorygame"
+        path="/memorygame"
         component={requiredAuth(MemoryGame, user, updateGlobalState)}
       />
       <Route render={() => <h1>Not Found :(</h1>} />

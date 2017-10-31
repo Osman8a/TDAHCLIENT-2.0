@@ -3,13 +3,13 @@ import React, { Component } from "react";
 class Header extends Component {
   render() {
     return (
-      <header>
-        <div className="titulo"> MemoryGame</div>
+      <memoryheader>
+        <div className="title"> MemoryGame</div>
         <div>
-          <button className="boton-reiniciar" />
+          <button className="reset_button">Reiniciar</button>
         </div>
-        <div className="titulo">Intentos:</div>
-      </header>
+        <div className="title">Intentos:</div>
+      </memoryheader>
     );
   }
 }
