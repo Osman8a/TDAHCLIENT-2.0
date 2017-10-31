@@ -46,7 +46,6 @@ const Header = ({ user, handleLogout, history }: Props) => {
   return (
     <header>
       <nav className="page-header navbar navbar-expand-sm navbar-dark">
-        {/* eslint-disable*/}
         <Link to={token ? "/dashboard" : "/"} className="navbar-brand">
           <h1 className="h2 page-header__logo">
             <span className="logo-text">TDAH</span>
@@ -57,7 +56,6 @@ const Header = ({ user, handleLogout, history }: Props) => {
             />
           </h1>
         </Link>
-        {/* eslint-enable */}
         <button
           className="navbar-toggler"
           type="button"

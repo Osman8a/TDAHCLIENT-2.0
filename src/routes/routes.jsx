@@ -8,7 +8,8 @@ import Signup from "./../components/Signup";
 import Login from "./../components/Login";
 import Dashboard from "./../components/Dashboard";
 import Profile from "./../components/Profile";
-
+import AreaList from "../components/AreaList";
+import GameList from "../components/GameList";
 import requiredAuth from "./../components/requiredAuth";
 
 type Props = {
@@ -50,13 +51,25 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
           currentPatient,
           updateGlobalState
         )}
-        // component={() => (
-        //   <Profile
-        //     user={user}
-        //     currentPatient={currentPatient}
-        //     updateGlobalState={updateGlobalState}
-        //   />
-        // )}
+      />
+      <Route
+        exact
+        path="/selectarea"
+        component={requiredAuth(
+          AreaList,
+          user,
+          currentPatient,
+          updateGlobalState
+        )}
+      />
+      <Route
+        path="/selectarea/:gameType"
+        component={requiredAuth(
+          GameList,
+          user,
+          currentPatient,
+          updateGlobalState
+        )}
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
