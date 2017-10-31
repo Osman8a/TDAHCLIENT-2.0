@@ -1,30 +1,34 @@
+// @flow
 import React from "react";
-import GameList from "./GameList";
+import { Link } from "react-router-dom";
+// import GameList from "./GameList";
 
 type Props = {
   name: String,
-  figure: String
+  figure: String,
+  type: String
 };
 
-const Area = ({ name, figure }: Props) => {
-  const onOpenGame = () => <GameList />;
-
+const Area = ({ name, figure, type }: Props) => {
+  if (!localStorage.getItem("currentPatient")) {
+    return <div>Select a Patient First</div>;
+  }
   return (
     <div className="row justify-content-center">
       <div className="col-4">
         <div className="well well-lg">
           <h4 className="fa fa-braille titulo">{name}</h4>
           <img className="img-circle img_css" src={figure} alt={name} />
-          <button onClick={onOpenGame} className="button_area">
+          <Link to={`/selectarea/${type}`} className="btn button_area">
             <span
               className={
-                Object.is(name, "Escolar")
+                Object.is(type, "escolar")
                   ? "fa fa-graduation-cap"
                   : "fa fa-braille"
               }
             />{" "}
             Seleccionar
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -9,8 +9,7 @@ type Props = {
   history: {
     push: Function
   },
-  currentPatient: Object,
-  updateGlobalState: Function
+  currentPatient: Object
 };
 
 class Dashboard extends Component<Props> {

@@ -8,9 +8,9 @@ import Signup from "./../components/Signup";
 import Login from "./../components/Login";
 import Dashboard from "./../components/Dashboard";
 import Profile from "./../components/Profile";
-import Area from "./../components/AreaList";
-import requiredAuth from "./../components/requiredAuth";
 import AreaList from "../components/AreaList";
+import GameList from "../components/GameList";
+import requiredAuth from "./../components/requiredAuth";
 
 type Props = {
   user: Object,
@@ -51,22 +51,24 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
           currentPatient,
           updateGlobalState
         )}
-        // component={() => (
-        //   <Profile
-        //     user={user}
-        //     currentPatient={currentPatient}
-        //     updateGlobalState={updateGlobalState}
-        //   />
-        // )}
       />
       <Route
         exact
-        path="/arealist"
-        component={() => (
-          <AreaList
-            currentPatient={currentPatient}
-            updateGlobalState={updateGlobalState}
-          />
+        path="/selectarea"
+        component={requiredAuth(
+          AreaList,
+          user,
+          currentPatient,
+          updateGlobalState
+        )}
+      />
+      <Route
+        path="/selectarea/:gameType"
+        component={requiredAuth(
+          GameList,
+          user,
+          currentPatient,
+          updateGlobalState
         )}
       />
       <Route render={() => <h1>Not Found :(</h1>} />
