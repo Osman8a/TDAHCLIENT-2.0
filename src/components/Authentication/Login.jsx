@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import InputEmail from "./InputEmail";
 import InputPassword from "./InputPassword";
-import { apiURL, regex } from "../constants";
+import { apiURL, regex } from "./../../constants";
 
 type Props = {
   handleLogin: Function
@@ -16,14 +16,14 @@ const Login = (props: Props) => {
   return (
     <div>
       <div className="container">
-        <div className="row app-login-wrapper">
+        <div className="row app-auth-wrapper">
           <form
-            className="col-12 col-md-6 offset-md-3 app-login"
+            className="col-12 col-md-6 offset-md-3 app-auth"
             onSubmit={Login.onSubmit(props.handleLogin)}
           >
             <InputEmail />
             <InputPassword />
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="app-auth__btn">
               Submit
             </button>
           </form>

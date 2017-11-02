@@ -1,14 +1,31 @@
-.app-login-wrapper {
+.app-auth-wrapper {
   align-items: center;
   display: flex;
   justify-content: center;
   height: auto;
 }
 
-.app-login {
+.app-auth {
   background: $main-color;
+  border-radius: 5px;
   margin-top: 80px;
   height: auto;
-  padding: 15px;
+  padding: 20px;
   width: 400px;
+}
+
+.app-auth__btn {
+  background: $btn-bg-color;
+  border-color: $btn-bg-color;
+  border-style: solid;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px;
+  color: $btn-font-color;
+  width: 100%;
+  &:hover,
+  &:focus {
+    background: darken($btn-bg-color, 10%);
+    border-color: darken($btn-bg-color, 10%);
+  }
 }
