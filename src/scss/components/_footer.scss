@@ -1,0 +1,12 @@
+.page-footer {
+  background: $footer-bg;
+  color: $footer-font-color;
+  text-align: center;
+  padding: 20px;
+}
+
+.page-footer--sticky {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}

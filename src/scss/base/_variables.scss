@@ -1,8 +1,15 @@
-$main-color: #9957cd;
-$brand-black: #1d2121;
-$brand-white: #fff;
+$main-color: #6dbcdb;
+$secondary-color: #fc4349;
+$brand-black: #2c3e50;
+$brand-white: #ffffff;
 // header vars
 $header-bg: $main-color;
 $header-font-color: $brand-white;
 $header-padding-x: 1.5rem;
 $header-padding-y: 0.6rem;
+// Auth
+$btn-font-color: $brand-white;
+$btn-bg-color: $brand-black;
+// Footer vars
+$footer-bg: $brand-black;
+$footer-font-color: $brand-white;

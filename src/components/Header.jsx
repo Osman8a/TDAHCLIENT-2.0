@@ -34,7 +34,7 @@ const Header = ({ user, handleLogout, history }: Props) => {
     return (
       <li key="1" className="nav-item">
         <button
-          className="btn btn-primary"
+          className="btn btn-primary page-header__logout"
           onClick={Header.onLogout(handleLogout, history)}
         >
           Salir
