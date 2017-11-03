@@ -38,7 +38,7 @@ class InputName extends Component {
           />
           <span className="sr-only">Nombre y Apellido</span>
           {this.state.errorAlert && (
-            <ErrorFeedback errorMessage="Name must not have neither numbers nor special characters" />
+            <ErrorFeedback errorMessage="only letters and spaces" />
           )}
         </label>
       </div>

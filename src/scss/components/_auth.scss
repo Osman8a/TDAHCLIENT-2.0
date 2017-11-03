@@ -1,17 +1,33 @@
 .app-auth-wrapper {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: auto;
+  position: relative;
 }
 
 .app-auth {
   background: $main-color;
-  border-radius: 5px;
-  margin-top: 80px;
+  border-radius: 5px; // margin-top: 80px;
+  margin: 18vh 0;
   height: auto;
   padding: 20px;
   width: 400px;
+}
+
+.app-auth__msg {
+  animation: appearMsg 0.6s ease forwards;
+  bottom: -80px;
+  position: fixed;
+  right: 0;
+  z-index: 10;
+}
+
+@keyframes appearMsg {
+  to {
+    bottom: 0;
+  }
 }
 
 .app-auth__btn {

@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Switch } from "react-router";
 
 import Header from "./../components/Header";
+import Footer from "./../components/Footer";
 import About from "./../components/Home";
 import Signup from "./../components/Authentication/Signup";
 import Login from "./../components/Authentication/Login";
@@ -73,5 +74,6 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
+    <Footer />
   </div>
 );

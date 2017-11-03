@@ -38,7 +38,7 @@ class InputPassword extends Component {
           />
           <span className="sr-only">Password</span>
           {this.state.errorAlert && (
-            <ErrorFeedback errorMessage="Password must have 6 characters be written with alpha numeric and some special characters (*/.-_ñÑ)" />
+            <ErrorFeedback errorMessage="only Alpha numeric characters and (*/.-_ñÑ) and at least 6" />
           )}
         </label>
       </div>

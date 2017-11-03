@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import gravatar from "gravatar";
@@ -12,31 +12,62 @@ type Props = {
   handleSignUp: Function
 };
 
-const Signup = (props: Props) => {
-  const token = localStorage.getItem("token");
-  if (token) return <Redirect to="/dashboard" />;
-  return (
-    <div>
-      <div className="container">
-        <div className="row app-auth-wrapper">
-          <form
-            className="col-12 col-md-6 offset-md-3 app-auth"
-            onSubmit={Signup.onSubmit(props.handleSignUp)}
-          >
-            <InputEmail />
-            <InputPassword />
-            <InputName />
-            <button type="submit" className="app-auth__btn">
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
-};
+class Signup extends Component<Props> {
+  state = {
+    errorAlert: null
+  };
 
-Signup.onSubmit = handleSignUp => e => {
+  validateField = () => {
+    switch (this.state.errorAlert) {
+      case true:
+        return (
+          <div className="alert alert-danger app-auth__msg" role="alert">
+            Check the error messages out in the Signup Field
+          </div>
+        );
+      case false:
+        return (
+          <div className="alert alert-success app-auth__msg" role="alert">
+            Account Created, Accessing the Dashboard...
+          </div>
+        );
+      default:
+        return "";
+    }
+  };
+
+  updateErrorAlert = state => this.setState(state);
+
+  render() {
+    const token = localStorage.getItem("token");
+    if (token) return <Redirect to="/dashboard" />;
+    return (
+      <div>
+        <div className="container">
+          <div className="row app-auth-wrapper">
+            <form
+              className="col-12 col-md-6 offset-md-3 app-auth"
+              onSubmit={Signup.onSubmit(
+                this.props.handleSignUp,
+                this.updateErrorAlert
+              )}
+            >
+              <InputEmail />
+              <InputPassword />
+              <InputName />
+              <button type="submit" className="app-auth__btn">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+        {this.validateField()}
+      </div>
+    );
+  }
+}
+
+Signup.onSubmit = (handleSignUp, updateErrorAlert) => e => {
   e.preventDefault();
 
   const {
@@ -47,24 +78,19 @@ Signup.onSubmit = handleSignUp => e => {
 
   const { email: reMail, name: reName, password: rePassword } = regex;
 
-  if (!reMail.test(email)) {
-    console.log("Email Invalido");
-    return;
+  if (!reMail.test(email) || !reName.test(name) || !rePassword.test(password)) {
+    return updateErrorAlert({
+      errorAlert: true
+    });
   }
 
-  if (!rePassword.test(password)) {
-    console.log("password Invalido");
-    return;
-  }
-
-  if (!reName.test(name)) {
-    console.log("Nombre Invalido");
-    return;
-  }
+  updateErrorAlert({
+    errorAlert: false
+  });
 
   const Gravatar = `http:${gravatar.url(email)}`;
 
-  (async () => {
+  return (async () => {
     try {
       const user = await axios.post(`${apiURL}/advisor`, {
         displayName: name,

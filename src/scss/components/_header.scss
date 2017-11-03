@@ -1,9 +1,14 @@
 .page-header {
   align-items: center;
   background: $header-bg;
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3);
   color: $header-font-color;
   position: relative;
   padding: $header-padding-y $header-padding-x;
+}
+
+.page-header__logout {
+  cursor: pointer;
 }
 
 .page-header__logo {
