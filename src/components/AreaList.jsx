@@ -2,8 +2,14 @@
 import React from "react";
 // import uuid from "uuid";
 import Area from "./Area";
+import Navigation from "./Navigation";
 
-const AreaList = () => {
+type Props = {
+  user: Object,
+  currentPatient: Object
+};
+
+const AreaList = ({ user, currentPatient }: Props) => {
   if (!localStorage.getItem("currentPatient")) {
     return <div>Select a Patient First</div>;
   }
@@ -26,16 +32,17 @@ const AreaList = () => {
   ];
 
   return (
-    <div>
-      {areas.map(msg => (
-        <Area
-          key={msg.id}
-          name={msg.name}
-          figure={msg.figure}
-          type={msg.type}
-          // onOpenGame={() => onOpenGame(msg.type)}
-        />
-      ))}
+    <div className="container">
+      <div className="row">
+        {areas.map(msg => (
+          <Area
+            key={msg.id}
+            name={msg.name}
+            figure={msg.figure}
+            type={msg.type}
+          />
+        ))}
+      </div>
     </div>
   );
 };

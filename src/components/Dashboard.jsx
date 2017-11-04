@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from "react";
-import Navigation from "./Navigation";
 
 type Props = {
   user: {
@@ -8,8 +7,7 @@ type Props = {
   },
   history: {
     push: Function
-  },
-  currentPatient: Object
+  }
 };
 
 class Dashboard extends Component<Props> {
@@ -23,15 +21,14 @@ class Dashboard extends Component<Props> {
     if (!this.props.user) {
       return <div>Loading User</div>;
     }
-    const { user: { data: user }, currentPatient } = this.props;
+    const { user: { data: user } } = this.props;
+    const localPatient = JSON.parse(localStorage.getItem("currentPatient"));
     return (
       <div>
-        <Navigation user={user} currentPatient={currentPatient} />
         <p>Dashboard</p>
         <div>{user.displayName}</div>
         <div>
-          {currentPatient &&
-            `Trabajando con el Paciente: ${this.props.currentPatient.name}`}
+          {localPatient && `Trabajando con el Paciente: ${localPatient.name}`}
         </div>
       </div>
     );

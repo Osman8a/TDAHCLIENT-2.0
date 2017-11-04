@@ -22,15 +22,31 @@ const RenderPatients = ({ patients, updateGlobalState }: Props) => {
     };
     return date.toLocaleString("es-VE", options);
   };
+  const calculateAge = birthTimeStamp => {
+    const age = ((new Date().getTime() - birthTimeStamp) / 31536000000).toFixed(
+      0
+    );
+    if (age < 1) {
+      const ageInMonths = `${((new Date().getTime() - birthTimeStamp) /
+        2678400000
+      ).toFixed(0)} Meses`;
+      return ageInMonths;
+    }
+    return `${age} Años`;
+  };
+
+  const localPatient = JSON.parse(localStorage.getItem("currentPatient"));
 
   return (
-    <table className="table">
+    <table className="patients table">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nombre</th>
+          <th scope="col">Nacimiento</th>
           <th scope="col">Edad</th>
           <th scope="col">avance</th>
+          <th scope="col">Usar Paciente</th>
           <th scope="col">Borrar Paciente</th>
         </tr>
       </thead>
@@ -38,14 +54,29 @@ const RenderPatients = ({ patients, updateGlobalState }: Props) => {
         {patients.map((patient, index) => (
           <tr
             key={patient._id}
-            onClick={RenderPatients.onGetPatient(updateGlobalState, patient)}
+            className={`${patient &&
+              localPatient &&
+              patient._id === localPatient._id &&
+              "current-patient"}`}
           >
             <th scope="row">{index + 1}</th>
             <td>
               {patient.name} {patient.lastname}
             </td>
             <td>{formatDate(patient.age)}</td>
-            <td>{patient.avance}</td>
+            <td>{calculateAge(patient.age)}</td>
+            <td>{!patient.avance ? "-" : patient.avance}</td>
+            <td>
+              <button
+                className="btn btn-success"
+                onClick={RenderPatients.onGetPatient(
+                  updateGlobalState,
+                  patient
+                )}
+              >
+                Usar este
+              </button>
+            </td>
             <td>
               <button
                 className="btn btn-danger"

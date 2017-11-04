@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Switch } from "react-router";
 
 import Header from "./../components/Header";
+import Navigation from "./../components/Navigation";
 import Footer from "./../components/Footer";
 import About from "./../components/Home";
 import Signup from "./../components/Authentication/Signup";
@@ -21,6 +22,7 @@ type Props = {
 export default ({ user, updateGlobalState, currentPatient }: Props) => (
   <div>
     <Header user={user} handleLogout={updateGlobalState} />
+    {user && <Navigation user={user.data} />}
     <Switch>
       <Route exact path="/" component={About} />
       <Route
@@ -74,6 +76,5 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
-    <Footer />
   </div>
 );

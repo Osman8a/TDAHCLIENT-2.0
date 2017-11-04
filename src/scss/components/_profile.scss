@@ -1,43 +1,55 @@
-.root_profile{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 100%;
+.root_profile {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.avatar-profile{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 1em auto;
+.profile {
+  align-self: center;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin: 50px 0;
+  max-width: 800px;
 }
 
-.name{
-    font-weight: 700;
-    font-size: 20pt;
-    text-align: center;
+.profile__avatar {
+  display: flex;
+  flex-direction: column;
 }
 
-.data{
-    list-style-type: none;
-    margin: 1em 0;
-    padding: 0;
+.profile__avatar__img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 1em auto;
 }
 
+.profile__avatar__name {
+  font-weight: 700;
+  font-size: 20pt;
+  text-align: center;
+}
+
+.data {
+  list-style-type: none;
+  margin: 1em 0;
+  padding: 0;
+}
 
 .data > li {
-    background-color: #fff;
-    padding: 1em;
-    margin: 0;
-    border: 1px solid #ddd;
-    color: #777;
+  background-color: #fff;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid #ddd;
+  color: #777;
 }
 
-.button_profile{
-    background-color: $main-color;
-    color: #fff;
-    border: 1px solid $main-color;
-    border-radius: 15px;
-    margin: -5 0em;
-    padding: 0.5em 5.75em;
+.button_profile {
+  background-color: $main-color;
+  color: #fff;
+  border: 1px solid $main-color;
+  border-radius: 15px;
+  margin: -5 0em;
+  padding: 0.5em 5.75em;
 }
