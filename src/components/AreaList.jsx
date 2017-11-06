@@ -26,16 +26,17 @@ const AreaList = () => {
   ];
 
   return (
-    <div>
-      {areas.map(msg => (
-        <Area
-          key={msg.id}
-          name={msg.name}
-          figure={msg.figure}
-          type={msg.type}
-          // onOpenGame={() => onOpenGame(msg.type)}
-        />
-      ))}
+    <div className="container selectArea">
+      <div className="row">
+        {areas.map(msg => (
+          <Area
+            key={msg.id}
+            name={msg.name}
+            figure={msg.figure}
+            type={msg.type}
+          />
+        ))}
+      </div>
     </div>
   );
 };

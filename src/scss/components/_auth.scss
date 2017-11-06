@@ -16,6 +16,12 @@
   width: 400px;
 }
 
+.auth-title {
+  color: $brand-white;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
 .app-auth__msg {
   animation: appearMsg 0.6s ease forwards;
   bottom: -80px;

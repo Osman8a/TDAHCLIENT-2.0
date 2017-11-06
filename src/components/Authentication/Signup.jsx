@@ -52,6 +52,7 @@ class Signup extends Component<Props> {
                 this.updateErrorAlert
               )}
             >
+              <h2 className="auth-title">Nuevo Registro</h2>
               <InputEmail />
               <InputPassword />
               <InputName />

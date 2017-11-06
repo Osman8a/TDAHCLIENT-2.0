@@ -11,19 +11,22 @@ type Props = {
 const Navigation = ({ user }: Props) => {
   const patient = JSON.parse(localStorage.getItem("currentPatient"));
   return (
-    <nav className="nav">
+    <nav className="nav page-navigation">
       <NavLink className="nav-link" activeClassName="active" to="/profile">
         <img src={user.avatar} alt={user.displayName} />
       </NavLink>
-      <p className="nav-link">
+      <NavLink className="nav-link" activeClassName="active" to="/profile">
         {patient
           ? `${patient.name} ${patient.lastname}`
           : "Seleccione un Paciente"}
-      </p>
-      <NavLink className="nav-link" activeClassName="active" to="selectarea">
+      </NavLink>
+      <NavLink className="nav-link" activeClassName="active" to="/dashboard">
+        Dashboard
+      </NavLink>
+      <NavLink className="nav-link" activeClassName="active" to="/selectarea">
         Juegos
       </NavLink>
-      <NavLink className="nav-link" activeClassName="active" to="/">
+      <NavLink exact className="nav-link" activeClassName="active" to="/">
         Ayuda
       </NavLink>
     </nav>

@@ -1,0 +1,16 @@
+.page-navigation {
+  background: $brand-black;
+  padding-bottom: 3px;
+  .nav-link {
+    display: flex;
+    align-items: center;
+    color: $brand-white;
+    img {
+      height: 25px;
+      width: 25px;
+    }
+  }
+  .active {
+    color: darken($brand-white, 10%);
+  }
+}
