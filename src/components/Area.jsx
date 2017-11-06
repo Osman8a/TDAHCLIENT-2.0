@@ -14,7 +14,7 @@ const Area = ({ name, figure, type }: Props) => {
     return <div>Select a Patient First</div>;
   }
   return (
-    <div className="col-12 col-md-6 justify-content-center">
+    <div className="col-12 col-md-6 justify-content-center selectArea__Area">
       <h4 className="fa fa-braille titulo">{name}</h4>
       <img className="img-circle img_css" src={figure} alt={name} />
       <Link to={`/selectarea/${type}`} className="btn button_area">

@@ -49,7 +49,7 @@ class Login extends Component<Props> {
                 this.updateErrorAlert
               )}
             >
-              <h2>Acceder</h2>
+              <h2 className="auth-title">Acceder</h2>
               <InputEmail />
               <InputPassword />
               <button type="submit" className="app-auth__btn">

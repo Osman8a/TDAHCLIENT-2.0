@@ -1,8 +1,15 @@
+// @flow
 import React, { Component } from "react";
-import ErrorFeedback from "./ErrorFeedback";
-import { regex } from "./../../constants";
+import ErrorFeedback from "./Authentication/ErrorFeedback";
+import { regex } from "./../constants";
 
-class InputName extends Component {
+type Props = {
+  name: String,
+  placeHolder: String,
+  id: String
+};
+
+class PatientInput extends Component<Props> {
   state = {
     errorAlert: null
   };
@@ -22,14 +29,14 @@ class InputName extends Component {
   render() {
     return (
       <div className="form-group">
-        <label htmlFor="inputName" className="w-100">
+        <label htmlFor={this.props.id} className="w-100">
           <input
             type="text"
             className={`form-control ${this.validateField()}`}
-            id="inputName"
-            name="displayName"
-            placeholder="Nombre y Apellido"
-            onBlur={InputName.onBlur(this.updateErrorState)}
+            id={this.props.id}
+            name={this.props.name}
+            placeholder={this.props.placeHolder}
+            onBlur={PatientInput.onBlur(this.updateErrorState)}
             onFocus={() =>
               this.updateErrorState({
                 errorAlert: null
@@ -45,7 +52,7 @@ class InputName extends Component {
   }
 }
 
-InputName.onBlur = updateErrorState => e => {
+PatientInput.onBlur = updateErrorState => e => {
   e.preventDefault();
 
   const { value } = e.target;
@@ -62,4 +69,4 @@ InputName.onBlur = updateErrorState => e => {
   });
 };
 
-export default InputName;
+export default PatientInput;

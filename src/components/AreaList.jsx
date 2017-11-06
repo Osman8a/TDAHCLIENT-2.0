@@ -2,14 +2,8 @@
 import React from "react";
 // import uuid from "uuid";
 import Area from "./Area";
-import Navigation from "./Navigation";
 
-type Props = {
-  user: Object,
-  currentPatient: Object
-};
-
-const AreaList = ({ user, currentPatient }: Props) => {
+const AreaList = () => {
   if (!localStorage.getItem("currentPatient")) {
     return <div>Select a Patient First</div>;
   }
@@ -32,7 +26,7 @@ const AreaList = ({ user, currentPatient }: Props) => {
   ];
 
   return (
-    <div className="container">
+    <div className="container selectArea">
       <div className="row">
         {areas.map(msg => (
           <Area

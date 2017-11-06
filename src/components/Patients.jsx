@@ -2,7 +2,8 @@
 import React, { Component } from "react";
 import DatePicker from "react-date-picker";
 import axios from "axios";
-import { apiURL, regex } from "../constants";
+import { apiURL, regex } from "./../constants";
+import PatientInput from "./PatientInput";
 
 type Props = {
   updateGlobalState: Function
@@ -66,28 +67,12 @@ class Patients extends Component<Props> {
     return (
       <div className="add-patient">
         <form className="col-12" onSubmit={this.handleGetpatients}>
-          <label htmlFor="inputName">
-            <input
-              type="text"
-              id="inputName"
-              className="form-control"
-              name="name"
-              aria-describedby="passwordHelpInline"
-              placeholder="Nombres"
-            />
-            <span className="sr-only">Nombre</span>
-          </label>
-          <label htmlFor="inputLastname">
-            <input
-              type="text"
-              id="inputLastname"
-              className="form-control"
-              name="lastname"
-              aria-describedby="passwordHelpInline"
-              placeholder="apellidos"
-            />
-            <span className="sr-only">Apellido</span>
-          </label>
+          <PatientInput placeHolder="Nombres" name="name" id="inputName" />
+          <PatientInput
+            placeHolder="apellidos"
+            name="lastname"
+            id="inputLastname"
+          />
           <DatePicker onChange={this.onChange} value={this.state.date} />
           <button type="submit" className="btn btn-success btn-sm">
             Success

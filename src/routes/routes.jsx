@@ -76,5 +76,6 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
+    <Footer />
   </div>
 );
