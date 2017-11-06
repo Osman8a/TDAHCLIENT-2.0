@@ -1,4 +1,6 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import createReactClass from 'create-react-class';
+import PropTypes from "prop-types";
 import { findDOMNode } from "react-dom";
 import cx from "classnames";
 import contains from "../helpers/contains";
@@ -7,7 +9,7 @@ import injectStyle from "../helpers/injectStyle";
 // Auto inject the styles (will only be done once)
 injectStyle();
 
-export default React.createClass({
+export default createReactClass({
   displayName: "ReactFlipCard",
 
   propTypes: {

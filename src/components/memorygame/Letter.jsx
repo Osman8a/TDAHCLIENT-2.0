@@ -5,22 +5,21 @@ type Props = {
   icon: Object,
   selectLetter: func,
   compared: Array,
-  wasguessed: Boolean,
-  type: string
+  wasguessed: Boolean
 };
 
 class Letter extends Component<Props> {
   render() {
     return (
-      <div className="carta" onClick={this.props.selectLetter}>
+      <div className="letter" onClick={this.props.selectLetter}>
         <FlipCard
-          type="vertical"
+          type="horizontal"
           flipped={this.props.compared || this.props.wasguessed}
           disabled
         >
-          <div className="portada" />
-          <div className="contenido">
-            <i className={`fa ${this.props.icono} fa-5x`} />
+          <div className="front" />
+          <div className="back">
+            <i className={`fa ${this.props.icon} fa-5x`} />
           </div>
         </FlipCard>
       </div>
