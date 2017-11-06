@@ -1,5 +1,37 @@
-.letter {
+.front,
+.back,
+.container {
   width: 125px;
-  height: 152px;
-  background: #ffb300;
+  height: 125px;
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  transition: all 0.3s linear;
+}
+
+.back {
+  transition: all 0.3s linear;
+  transform: rotateY(180deg);
+}
+
+.container {
+  position: relative;
+}
+
+.container:hover .front {
+  transform: rotateY(180deg);
+}
+
+.container:hover .back {
+  transform: rotateY(360deg);
 }

@@ -1,12 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import Letter from "./Letter";
 
-class Board extends Component {
-  state = {};
-  render() {
-    const cartas = [1, 2, 3, 4, 5, 6];
-    return <div className="board">{cartas.map((carta) => <Letter />)}</div>;
-  }
-}
+type Props = {
+  letter: Object,
+  SelectedCouple: Array,
+  selectLetter: func
+};
+
+const Board = (props: Props) => (
+  <div className="board">
+    {props.letter.map((letter, index) => {
+      const compared = props.SelectedCouple.indexOf(letter) > -1;
+
+      return (
+        <Letter
+          key={index}
+          icon={letter.icon}
+          compared={compared} // esta siendo comparado
+          selectLetter={() => props.selectLetter(letter)}
+          wasguessed={letter.wasguessed} // fue adivinado
+        />
+      );
+    })}
+  </div>
+);
 
 export default Board;

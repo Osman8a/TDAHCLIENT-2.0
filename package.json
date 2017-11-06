@@ -4,15 +4,19 @@
   "description": "Webpack 3 Boilerplate for React + Redux",
   "main": "server.js",
   "scripts": {
-    "start": "export NODE_ENV=production || SET \"NODE_ENV=production\" && webpack -p --optimize-minimize && node server.js",
+    "start":
+      "export NODE_ENV=production || SET \"NODE_ENV=production\" && webpack -p --optimize-minimize && node server.js",
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "clear": "rm -rf ./public",
     "build:dev": "rm -rf ./public && webpack",
     "build:dev--watch": "webpack -d -w",
-    "build": "export NODE_ENV=production || SET \"NODE_ENV=production\" && rm -rf ./public && webpack -p",
+    "build":
+      "export NODE_ENV=production || SET \"NODE_ENV=production\" && rm -rf ./public && webpack -p",
     "lint": "eslint **/*.{js, jsx} --quiet",
-    "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"src/**/*.{js, jsx}\"",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha ./src/__test__/**/*.test.jsx --require babel-register",
+    "format":
+      "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"src/**/*.{js, jsx}\"",
+    "test":
+      "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha ./src/__test__/**/*.test.jsx --require babel-register",
     "test:watch": "yarn run test --watch",
     "flow:init": "flow init",
     "flow:status": "flow status",
@@ -25,13 +29,7 @@
     "type": "git",
     "url": "https://github.com/luigi055/webpack3-React-Redux-boilerplate.git"
   },
-  "keywords": [
-    "react",
-    "redux",
-    "react-router-v4",
-    "webpack2",
-    "boilerplate"
-  ],
+  "keywords": ["react", "redux", "react-router-v4", "webpack2", "boilerplate"],
   "author": "Pedro La Rosa",
   "license": "MIT",
   "devDependencies": {
@@ -102,6 +100,7 @@
     "react": "16.0.0",
     "react-date-picker": "^6.2.2",
     "react-dom": "16.0.0",
+    "react-flipcard": "^0.2.1",
     "react-router-dom": "4.2.2",
     "uuid": "^3.1.0"
   }

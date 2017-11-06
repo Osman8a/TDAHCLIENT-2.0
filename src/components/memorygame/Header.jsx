@@ -1,17 +1,15 @@
-import React, { Component } from "react";
+import React  from "react";
 
-class Header extends Component {
-  render() {
+const Header = () => {
     return (
-      <memoryheader>
+      <header className="header">
         <div className="title"> MemoryGame</div>
         <div>
           <button className="reset_button">Reiniciar</button>
         </div>
         <div className="title">Intentos:</div>
-      </memoryheader>
+      </header>
     );
-  }
 }
 
 export default Header;
