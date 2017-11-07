@@ -14,7 +14,7 @@ class Letter extends Component<Props> {
       <div className="letter" onClick={this.props.selectLetter}>
         <FlipCard
           flipped={this.props.compared || this.props.wasguessed}
-          disabled={true}
+          disabled
         >
           <div className="front" />
           <div className="back">

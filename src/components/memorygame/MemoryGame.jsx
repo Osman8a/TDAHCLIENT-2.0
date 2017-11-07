@@ -8,7 +8,8 @@ const getInitialState = () => {
   return {
     letter,
     SelectedCouple: [], // parejaseleccionada
-    IsCompared: false // esta comparando
+    IsCompared: false, // esta comparando
+    try: 0 // numero de intentos
   };
 };
 
@@ -53,19 +54,31 @@ class MemoryGame extends Component {
           return { ...carta, wasguessed: true };
         });
       }
-
+      this.checkwinner(letter);
       this.setState({
         SelectedCouple: [],
         letter,
-        IsCompared: false
+        IsCompared: false,
+        try: this.state.try + 1
       });
     }, 1000);
+  }
+
+  checkwinner(letter) {
+    // letter.forEach(carta => (carta.wasguessed = true));
+    if (letter.filter(carta => !carta.wasguessed).length === 0) {
+      alert(`Ganaste en ${this.state.try} intentos`);
+    }
+  }
+
+  reset() {
+    this.setState(getInitialState());
   }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header try={this.state.try} reset={() => this.reset()} />
         <Board
           letter={this.state.letter}
           SelectedCouple={this.state.SelectedCouple}
