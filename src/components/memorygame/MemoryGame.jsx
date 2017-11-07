@@ -7,8 +7,8 @@ const getInitialState = () => {
   const letter = BuildAnLetters();
   return {
     letter,
-    SelectedCouple: [],
-    IsCompared: false
+    SelectedCouple: [], // parejaseleccionada
+    IsCompared: false // esta comparando
   };
 };
 
@@ -22,7 +22,7 @@ class MemoryGame extends Component {
     if (
       this.state.IsCompared ||
       this.state.SelectedCouple.indexOf(letter) > -1 ||
-      letter.wasguessed
+      letter.wasguessed // fue adivinada
     ) {
       return;
     }
@@ -31,6 +31,35 @@ class MemoryGame extends Component {
     this.setState({
       SelectedCouple
     });
+
+    if (SelectedCouple.length === 2) {
+      this.compareCouple(SelectedCouple);
+    }
+  }
+
+  compareCouple(SelectedCouple) {
+    this.setState({ IsCompared: true });
+
+    setTimeout(() => {
+      const [firstLetter, secondLetter] = SelectedCouple;
+      let letter = this.state.letter;
+
+      if (firstLetter.icon === secondLetter.icon) {
+        letter = letter.map(carta => {
+          if (carta.icon !== firstLetter.icon) {
+            return carta;
+          }
+
+          return { ...carta, wasguessed: true };
+        });
+      }
+
+      this.setState({
+        SelectedCouple: [],
+        letter,
+        IsCompared: false
+      });
+    }, 1000);
   }
 
   render() {

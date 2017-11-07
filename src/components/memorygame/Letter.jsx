@@ -13,9 +13,8 @@ class Letter extends Component<Props> {
     return (
       <div className="letter" onClick={this.props.selectLetter}>
         <FlipCard
-          type="horizontal"
           flipped={this.props.compared || this.props.wasguessed}
-          disabled
+          disabled={true}
         >
           <div className="front" />
           <div className="back">
