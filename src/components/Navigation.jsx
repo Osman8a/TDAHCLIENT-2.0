@@ -26,7 +26,7 @@ const Navigation = ({ user }: Props) => {
       <NavLink className="nav-link" activeClassName="active" to="/selectarea">
         Juegos
       </NavLink>
-      <NavLink exact className="nav-link" activeClassName="active" to="/">
+      <NavLink className="nav-link" activeClassName="active" to="/memorygame">
         Ayuda
       </NavLink>
     </nav>

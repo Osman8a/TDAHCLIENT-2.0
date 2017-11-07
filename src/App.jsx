@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router } from "react-router-dom";
+import "../node_modules/font-awesome/css/font-awesome.css";
 
 /* eslint-disable */
 import "./favicon.ico?output=favicon.ico";

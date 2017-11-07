@@ -13,6 +13,7 @@ import Profile from "./../components/Profile";
 import AreaList from "../components/AreaList";
 import GameList from "../components/GameList";
 import requiredAuth from "./../components/Authentication/requiredAuth";
+import MemoryGame from "./../components/memorygame/MemoryGame";
 
 type Props = {
   user: Object,
@@ -73,6 +74,11 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
           currentPatient,
           updateGlobalState
         )}
+      />
+      <Route
+        exact
+        path="/memorygame"
+        component={requiredAuth(MemoryGame, user, updateGlobalState)}
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
