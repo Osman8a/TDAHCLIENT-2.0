@@ -6,7 +6,7 @@
 .front {
   width: 125px;
   height: 125px;
-  background-color: #ffb300;
+  background-color: #0000c7;
 }
 
 .back {
@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(3, 220, 244);
+  background-color: $main-color;
 }
 
 .ReactFlipCard {
