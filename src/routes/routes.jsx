@@ -14,6 +14,7 @@ import AreaList from "../components/AreaList";
 import GameList from "../components/GameList";
 import requiredAuth from "./../components/Authentication/requiredAuth";
 import MemoryGame from "./../components/memorygame/MemoryGame";
+import TicTacToe from "./../components/tictactoe/TicTacToe.jsx";
 
 type Props = {
   user: Object,
@@ -79,6 +80,11 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
         exact
         path="/memorygame"
         component={requiredAuth(MemoryGame, user, updateGlobalState)}
+      />
+      <Route
+        exact
+        path="/tictactoe"
+        component={requiredAuth(TicTacToe, user, updateGlobalState)}
       />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>

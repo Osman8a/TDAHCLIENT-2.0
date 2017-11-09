@@ -1,0 +1,12 @@
+.tile {
+  width: 30%;
+  height: 150px;
+  font-size: 60px;
+  background: $brand-blue;
+  border: 8px solid $main-color;
+  display: inline-block;
+  float: left;
+  color: $main-color;
+  text-align: center;
+  line-height: 150px;
+}

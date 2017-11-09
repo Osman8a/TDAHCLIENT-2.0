@@ -29,6 +29,9 @@ const Navigation = ({ user }: Props) => {
       <NavLink className="nav-link" activeClassName="active" to="/memorygame">
         Ayuda
       </NavLink>
+      <NavLink className="nav-link" activeClassName="active" to="/tictactoe">
+        Ayuda2
+      </NavLink>
     </nav>
   );
 };
