@@ -30,7 +30,10 @@ const Navigation = ({ user }: Props) => {
         Ayuda
       </NavLink>
       <NavLink className="nav-link" activeClassName="active" to="/tictactoe">
-        Ayuda2
+        tictatoe
+      </NavLink>
+      <NavLink className="nav-link" activeClassName="active" to="/wordsgame">
+        WordsGame
       </NavLink>
     </nav>
   );
