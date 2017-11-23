@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import swal from 'sweetalert2'
+import SweetAlert from 'sweetalert-react';
 import InputWordsB from "./InputWordsB";
 import InputWordsD from "./InputWordsD";
 import InputWordsP from "./InputWordsP";
@@ -147,13 +149,22 @@ WordsGame.onSubmit = (numTry, updateStates) => e => {
   ];
 
   if (wordB[0].value != -1 && wordB[1].value != -1 && wordB[2].value != -1) {
-    alert(`Felicitaciones Aprobaste B`);
+    // alert(`Felicitaciones Aprobaste B`);
+    swal(
+      'Felicidades!',
+      'Aprobaste B!',
+      'success'
+    )
     updateStates({
       showD: true
     });
     banderes.D = true;
   } else {
-    alert(`hay una letras incorrecta`);
+    swal(
+      ':( ',
+      'hay una letra incorrecta!',
+      'error'
+    )
     updateStates({
       try: numTry + 1
     });
@@ -169,13 +180,21 @@ WordsGame.onSubmit = (numTry, updateStates) => e => {
       { value: e.target.wordD2.value.indexOf("d") }
     ];
     if (wordD[0].value != -1 && wordD[1].value != -1 && wordD[2].value != -1) {
-      alert(`Felicitaciones Aprobaste D`);
+      swal(
+        'Felicidades!',
+        'Aprobaste D!',
+        'success'
+      )
       updateStates({
         showP: true
       });
       banderes.P = true;
     } else {
-      alert(`hay una letra incorrecta`);
+      swal(
+        ':( ',
+        'hay una letra incorrecta!',
+        'error'
+      )
     }
   }
 
@@ -189,13 +208,21 @@ WordsGame.onSubmit = (numTry, updateStates) => e => {
       { value: e.target.wordP2.value.indexOf("p") }
     ];
     if (wordP[0].value != -1 && wordP[1].value != -1 && wordP[2].value != -1) {
-      alert(`Felicitaciones Aprobaste D`);
+      swal(
+        'Felicidades!',
+        'Aprobaste P!',
+        'success'
+      )
       updateStates({
         showQ: true
       });
       banderes.Q = true;
     } else {
-      alert(`hay una letra incorrecta`);
+      swal(
+        ':( ',
+        'hay una letra incorrecta!',
+        'error'
+      )
     }
   }
 
@@ -204,14 +231,23 @@ WordsGame.onSubmit = (numTry, updateStates) => e => {
    * */
   if (banderes.Q === true) {
     const wordQ = [
-      { value: e.target.wordQ.value.indexOf("p") },
-      { value: e.target.wordQ1.value.indexOf("p") },
-      { value: e.target.wordQ2.value.indexOf("p") }
+      { value: e.target.wordQ.value.indexOf("q") },
+      { value: e.target.wordQ1.value.indexOf("q") },
+      { value: e.target.wordQ2.value.indexOf("q") }
     ];
     if (wordQ[0].value != -1 && wordQ[1].value != -1 && wordQ[2].value != -1) {
-      alert(`Felicitaciones Aprobaste Q`);
+      swal(
+        'Felicidades!',
+        'Aprobaste Q!',
+        'success'
+      )
+     
     } else {
-      alert(`hay una letra incorrecta`);
+      swal(
+        ':( ',
+        'hay una letra incorrecta!',
+        'error'
+      )
     }
   }
 };
