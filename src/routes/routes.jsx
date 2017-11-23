@@ -17,6 +17,8 @@ import MemoryGame from "./../components/memorygame/MemoryGame";
 import TicTacToe from "./../components/tictactoe/TicTacToe";
 import WordsGame from "./../components/wordsgame/WordsGame";
 import CorrectWordGame from './../components/correctwordgame/AppGame';
+import CompleteWords from "./../components/completewords/AppGame";
+
 
 type Props = {
   user: Object,
@@ -98,7 +100,11 @@ export default ({ user, updateGlobalState, currentPatient }: Props) => (
         path="/words"
         component={requiredAuth(CorrectWordGame, user, updateGlobalState)}
       />
-      
+      <Route
+        exact
+        path="/completewords"
+        component={requiredAuth(CompleteWords, user, updateGlobalState)}
+      />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
     <Footer />
