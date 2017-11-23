@@ -24,6 +24,7 @@ const GameList = (props: Props) => {
           name={msg.name}
           figure={msg.figure}
           type={msg.type}
+          code={msg.code}
           {...props}
         />
       ))}
@@ -38,14 +39,24 @@ GameList.detectGameType = gameType => {
       name: "Directionality",
       figure:
         "http://res.cloudinary.com/osman8a/image/upload/c_scale,h_802,w_720/v1506839015/arrows_zrwzk2.jpg",
-      type: "cognitive"
+      type: "cognitive",
+      code: 0
+    },
+    {
+      id: uuid.v4(),
+      name: "Memoria",
+      figure:
+        "http://res.cloudinary.com/osman8a/image/upload/c_scale,h_802,w_720/v1506839015/hands_hbezeb.jpg",
+      type: "cognitive",
+      code: 1
     },
     {
       id: uuid.v4(),
       name: "Directionality of hands",
       figure:
         "http://res.cloudinary.com/osman8a/image/upload/c_scale,h_802,w_720/v1506839015/hands_hbezeb.jpg",
-      type: "escolar"
+      type: "escolar",
+      code: 2
     }
   ];
 
