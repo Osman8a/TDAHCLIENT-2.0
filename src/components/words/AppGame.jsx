@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import swal from 'sweetalert2'
 import Game from "./Game";
 import Header from "./Header";
 
@@ -111,18 +112,30 @@ class AppGame extends Component {
     console.log(currentWord)
 
     if (selectWord.concat(currentWord) === correct) {
-      alert(`Felicidades ${correct}`);
+      swal(
+        'Felicidades!',
+        `Aprobaste ${correct}`,
+        'success'
+      )
       this.setState({
         i: this.state.i + 1
       });
     } else {
-      alert(`Fallaste ${selectWord.concat(currentWord)} no es igual a ${currentWord}`);
+      swal(
+        'Fallaste!',
+        `${selectWord.concat(currentWord)} no es igual a ${correct}`,
+        'error'
+      )
       this.setState({
         try: this.state.try + 1
       });
     }
     if (this.state.words.length - 1 === this.state.i) {
-      alert(`Prueba Culminada`);
+      swal(
+        'Felicidades!',
+        `Prueba Culminada`,
+        'success'
+      )
       this.setState({
         i: 0
       });

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import swal from 'sweetalert2'
 import Game from "./Game";
 import Header from "./Header";
 
@@ -17,19 +18,19 @@ class AppGame extends Component {
         fail: "borcha",
         word: "brocha",
         img:
-          "http://res.cloudinary.com/osman8a/image/upload/v1506968633/Boat_h14hag.jpg"
+          "http://res.cloudinary.com/osman8a/image/upload/v1511545928/brocha_srltrn.jpg"
       },
       {
         fail: "barzo",
         word: "brazo",
         img:
-          "http://res.cloudinary.com/osman8a/image/upload/v1506968633/Boat_h14hag.jpg"
+          "http://res.cloudinary.com/osman8a/image/upload/v1511546398/brazo_g3mzm7.jpg"
       },
       {
         fail: "burja",
         word: "bruja",
         img:
-          "http://res.cloudinary.com/osman8a/image/upload/v1506968633/Boat_h14hag.jpg"
+          "http://res.cloudinary.com/osman8a/image/upload/v1511546397/bruja_ct4pyg.jpg"
       }
     ]
   };
@@ -40,20 +41,32 @@ class AppGame extends Component {
     const input = document.getElementById("wordGame");
 
     if (inputWord === currentWord) {
-      alert(`Felicidades ${inputWord}`);
+      swal(
+        'Felicidades!',
+        `Aprobaste es ${inputWord}!`,
+        'success'
+      )
       this.setState({
         i: this.state.i + 1
       });
       input.value = "";
     } else {
-      alert(`Fallaste ${inputWord} no es igual a ${currentWord}`);
+      swal(
+        'Fallaste!',
+        `${inputWord} no es igual a ${currentWord}`,
+        'error'
+      )
       this.setState({
         try: this.state.try + 1
       });
       input.value = "";
     }
     if (this.state.words.length - 1 === this.state.i) {
-      alert(`Prueba Culminada`);
+      swal(
+        'Felicidades, Excelente!',
+        `Prueba Culminada!`,
+        'success'
+      )
       this.setState({
         i: 0
       });
