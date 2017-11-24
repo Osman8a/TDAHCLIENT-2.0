@@ -26,27 +26,8 @@ const Navigation = ({ user }: Props) => {
       <NavLink className="nav-link" activeClassName="active" to="/selectarea">
         Juegos
       </NavLink>
-      <NavLink className="nav-link" activeClassName="active" to="/memorygame">
+      <NavLink className="nav-link" activeClassName="active" to="/">
         Ayuda
-      </NavLink>
-      <NavLink className="nav-link" activeClassName="active" to="/tictactoe">
-        tictatoe
-      </NavLink>
-      <NavLink className="nav-link" activeClassName="active" to="/wordsgame">
-        WordsGame
-      </NavLink>
-      <NavLink className="nav-link" activeClassName="active" to="/words">
-        WordsGame II
-      </NavLink>
-      <NavLink
-        className="nav-link"
-        activeClassName="active"
-        to="/completewords"
-      >
-        WordsGame III
-      </NavLink>
-      <NavLink className="nav-link" activeClassName="active" to="/analysiswords">
-        Words
       </NavLink>
     </nav>
   );
