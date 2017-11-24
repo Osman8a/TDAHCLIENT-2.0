@@ -45,6 +45,9 @@ const Navigation = ({ user }: Props) => {
       >
         WordsGame III
       </NavLink>
+      <NavLink className="nav-link" activeClassName="active" to="/analysiswords">
+        Words
+      </NavLink>
     </nav>
   );
 };

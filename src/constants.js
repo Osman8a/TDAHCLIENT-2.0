@@ -1,5 +1,5 @@
-const apiURL = "http://localhost:3001/api";
-// const apiURL = 'https://tdah-rest-api.herokuapp.com/api';
+//const apiURL = "http://localhost:3001/api";
+const apiURL = 'https://tdah-rest-api.herokuapp.com/api';
 const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
   name: /^[a-zA-ZÑñáéíóúÁÉÍÓÚ\s]{2,50}$/,

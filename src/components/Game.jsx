@@ -1,8 +1,5 @@
-// @flow
-import React from "react";
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-
-var { Route } = Router;
 
 type Props = {
   name: String,
@@ -13,29 +10,37 @@ type Props = {
 const onOpenSpecificGame = code => {
   console.log(code);
   if (code === 1) {
-    <Redirect to="/memorygame" />;
-    // this.props.history.push("/memorygame");
+    this
   } else {
     console.log(`no es igual a 1`);
   }
 };
-const Game = (props: Props) => (
-  <div className="col-md-6">
-    <div className="well well-lg">
-      <h4 className="fa fa-braille titulo">{props.name}</h4>
-      <img
-        className="img-circle img_css"
-        src={props.figure}
-        alt={`Juego ${props.name}`}
-      />
-      <button
-        onClick={() => onOpenSpecificGame(props.code)}
-        className={"button_area"}
-      >
-        Seleccionar
-      </button>
+
+class Game extends Component<Props> {
+  state = {  
+    value: null,
+  }
+
+  render() {
+    return (
+      <div className="col-md-6">
+      <div className="well well-lg">
+        <h4 className="fa fa-braille titulo">{this.props.name}</h4>
+        <img
+          className="img-circle img_css"
+          src={this.props.figure}
+          alt={`Juego ${this.props.name}`}
+        />
+        <button
+          onClick={() => onOpenSpecificGame(this.props.code, this.updateValue)}
+          className={"button_area"}
+          >
+          Seleccionar
+          </button>
+      </div>
     </div>
-  </div>
-);
+    );
+  }
+}
 
 export default Game;

@@ -114,9 +114,12 @@ RenderPatients.onRemovePatient = (updateGlobalState, patient) => e => {
         updateGlobalState({ currentPatient: null });
         localStorage.removeItem("currentPatient");
       }
-      const user = await axios.get(`http://localhost:3001/api/advisor/me`, {
-        headers: { "x-auth": localStorage.getItem("token") }
-      });
+      const user = await axios.get(
+                `https://tdah-rest-api.herokuapp.com/api/advisor/me`,
+                {
+                  headers: { "x-auth": localStorage.getItem("token") }
+                }
+              );
       updateGlobalState({ user });
     } catch (err) {
       throw new Error(err);
